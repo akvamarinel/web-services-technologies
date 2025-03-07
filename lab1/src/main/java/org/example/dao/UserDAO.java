@@ -13,10 +13,10 @@ import java.util.List;
 public class UserDAO {
     private Connection connection;
     private static final String FIND_USERS = "SELECT * FROM users WHERE 1=1";
-    private static final String FILTER_NAME = "AND name = ?";
-    private static final String FILTER_AGE = "AND age = ?";
-    private static final String FILTER_CITY = "AND city = ?";
-    private static final String FILTER_AVERAGE_SCORE = "AND average_score = ?";
+    private static final String FILTER_NAME = " AND name = ?";
+    private static final String FILTER_AGE = " AND age = ?";
+    private static final String FILTER_CITY = " AND city = ?";
+    private static final String FILTER_AVERAGE_SCORE = " AND average_scale = ?";
 
 
     public UserDAO() throws SQLException {
@@ -60,7 +60,7 @@ public class UserDAO {
             user.setName(res.getString("name"));
             user.setAge(res.getInt("age"));
             user.setCity(res.getString("city"));
-            user.setAverageScore(res.getDouble("average_score"));
+            user.setAverageScore(res.getDouble("average_scale"));
             userResult.add(user);
         }
         return userResult;

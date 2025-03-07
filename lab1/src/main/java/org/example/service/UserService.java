@@ -1,36 +1,20 @@
 package org.example.service;
 
-
-import org.example.dao.UserDAO;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
 import org.example.model.User;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-
-import java.sql.SQLException;
 import java.util.List;
 
 @WebService
-public class UserService {
-
-    private UserDAO userDAO;
-
-    public UserService() {
-        try {
-
-            this.userDAO = new UserDAO();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+public interface UserService {
 
     @WebMethod
-    public List<User> searchUsers(String name, Integer age, String city, Double averageScore) {
-        try {
-            return userDAO.findUsers(name, age, city, averageScore);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    List<User> searchUsers(
+            @WebParam(name = "name") String name,
+            @WebParam(name = "age") Integer age,
+            @WebParam(name = "city") String city,
+            @WebParam(name = "averageScore") Double averageScore
+    );
 }
