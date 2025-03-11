@@ -14,7 +14,8 @@ public interface UserService {
             @QueryParam("name") String name,
             @QueryParam("age") Integer age,
             @QueryParam("city") String city,
-            @QueryParam("averageScale") Double averageScale
+            @QueryParam("averageScale") Double averageScale,
+            @HeaderParam("Authorization") String auth
     );
 
     @POST
@@ -22,18 +23,21 @@ public interface UserService {
             @QueryParam("name") String name,
             @QueryParam("age") int age,
             @QueryParam("city") String city,
-            @QueryParam("averageScale") double averageScale);
+            @QueryParam("averageScale") double averageScale,
+            @HeaderParam("Authorization") String auth);
 
     @DELETE
     Response deleteUser(
-            @QueryParam("id") int id);
+            @QueryParam("id") int id,
+            @HeaderParam("Authorization") String auth);
 
     @PUT
     Response updateUser(
-            @QueryParam("int") int id,
+            @QueryParam("id") int id,
             @QueryParam("name") String name,
             @QueryParam("age") int age,
             @QueryParam("city") String city,
-            @QueryParam("averageScale") double averageScale);
+            @QueryParam("averageScale") double averageScale,
+            @HeaderParam("Authorization") String auth);
 
 }
